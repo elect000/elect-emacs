@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: void
+# key: void
+# --
+void $1(){
+     $2
+}

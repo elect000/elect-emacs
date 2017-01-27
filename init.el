@@ -309,8 +309,9 @@
 (add-to-list 'org-latex-classes
 	     '("koma-article"
 	       "\\documentclass{scrartcl}
+		\\usepackage[utf8]{inputenc}
 		\\usepackage[dvipdfmx]{graphicx}
-		\\usepackage{biblatex}
+		\\usepackage[backend=biber,bibencoding=utf8]{biblatex}
 		\\usepackage{url}
 		\\usepackage{indentfirst}
 		[NO-DEFAULT-PACKAGES]
@@ -323,3 +324,43 @@
 
 (setq org-latex-with-hyperref nil)
 (setq org-src-fontify-natively t)
+
+;; smartparens
+(require 'smartparens-config)
+(smartparens-global-mode t)
+
+
+;; rainbow-delimiters-mode
+;; rainbow-delimiters を使うための設定
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; 括弧の色を強調する設定
+(require 'cl-lib)
+(require 'color)
+(defun rainbow-delimiters-using-stronger-colors ()
+  (interactive)
+  (cl-loop
+   for index from 1 to rainbow-delimiters-max-face-count
+   do
+   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+    (cl-callf color-saturate-name (face-foreground face) 30))))
+(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
+
+
+;; helm mode
+(require 'helm-config)
+(helm-mode 1)
+
+;; tabbar mode
+(require 'tabbar)
+(tabbar-mode t)
+;; タブ上でマウスホイール操作無効
+(tabbar-mwheel-mode -1)
+;; グループ化しない
+(setq tabbar-buffer-groups-function nil)
+;; 画像を使わないことで軽量化する
+(setq tabbar-use-images nil)
+;; キーに割り当てる
+(global-set-key (kbd "M-<right>") 'tabbar-forward-tab)
+(global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
