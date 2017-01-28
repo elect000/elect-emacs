@@ -364,3 +364,6 @@
 ;; キーに割り当てる
 (global-set-key (kbd "M-<right>") 'tabbar-forward-tab)
 (global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
+
+;; toggle-trunslate-line
+(toggle-truncate-lines -1)
