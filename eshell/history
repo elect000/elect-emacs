@@ -113,3 +113,13 @@ platex report
 dvipdfmx report
 platex report
 dvipdfmx report
+platex tanni.tex 
+dvipdfmx tanni
+platex tanni.tex 
+dvipdfmx tanni
+platex report
+dvipdfmx tanni
+cd English/
+ls
+platex test
+dvipdfmx test

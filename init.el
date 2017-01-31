@@ -366,4 +366,4 @@
 (global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
 
 ;; toggle-trunslate-line
-(toggle-truncate-lines -1)
+(toggle-truncate-lines t)

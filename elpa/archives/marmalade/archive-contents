@@ -1678,7 +1678,7 @@
 	       (6 1)))
 	     "basic support for magit links" single])
  (org-journal .
-	      [(1 11 2)
+	      [(1 12 0)
 	       nil "a simple org-mode based journaling mode" single])
  (org-gnome .
 	    [(0 1)
@@ -1878,7 +1878,7 @@
 	     [(0 8 8)
 	      nil "Managing multiple terminal buffers in Emacs." single])
  (multi-project .
-		[(0 0 18)
+		[(0 0 19)
 		 nil "Easily work with multiple projects." single])
  (multi-eshell .
 	       [(0 0 1)
