@@ -269,7 +269,7 @@
     (set-background-color "Black")
     (set-foreground-color "LightGray")
     (set-cursor-color "Gray")
-    (set-frame-parameter nil 'alpha 70) ;透明度
+    (set-frame-parameter nil 'alpha 100) ;透明度
     ))
 
 
@@ -300,9 +300,6 @@
 
 ;; line
 (global-linum-mode t)
-
-;; autopair
-(autopair-global-mode t)
 
 ;; org-mode
 (require 'ox-latex)
@@ -347,7 +344,6 @@
     (cl-callf color-saturate-name (face-foreground face) 30))))
 (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
-
 ;; helm mode
 (require 'helm-config)
 (helm-mode 1)
@@ -367,3 +363,23 @@
 
 ;; toggle-trunslate-line
 (toggle-truncate-lines t)
+
+;; slime
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
+
+;; SBCLをデフォルトのCommon Lisp処理系に設定
+(setq inferior-lisp-program "sbcl")
+
+;; SLIMEのロード
+(require 'slime)
+(slime-setup '(slime-repl slime-fancy slime-banner)) 
+
+;; ctable
+(require 'ctable)
+
+
+;; path
+(exec-path-from-shell-initialize)
+
+;; stylus 
+(require 'stylus-mode)
