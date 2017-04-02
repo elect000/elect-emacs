@@ -194,6 +194,7 @@
 
   )
 (add-hook 'c-mode-common-hook 'my-all-cc-mode-init)
+(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
 
 
 ;; C, C++
@@ -216,8 +217,33 @@
 ;; .h でも C++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+;; compile ;; 
 
+(require 'compile)
 
+(defvar yel-compile-auto-close t
+  "* If non-nil, a window is automatically closed after (\\[compile]).")
+
+(defadvice compile (after compile-aftercheck
+                          activate compile)
+  "Adds a funcion of windows auto-close."
+  (let ((proc (get-buffer-process "*compilation*")))
+    (if (and proc yel-compile-auto-close)
+        (set-process-sentinel proc 'yel-compile-teardown))))
+
+(defun yel-compile-teardown (proc status)
+  "Closes window automatically, if compile succeed."
+  (let ((ps (process-status proc)))
+    (if (eq ps 'exit)
+        (if (eq 0 (process-exit-status proc))
+            (progn
+              (delete-other-windows)
+              (kill-buffer "*compilation*")
+              (message "---- Compile Success ----")
+              )
+          (message "Compile Failer")))
+    (if (eq ps 'signal)
+        (message "Compile Abnormal end"))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;; Tips
@@ -266,13 +292,13 @@
 
 ;; Color
 (if window-system (progn
-    (set-background-color "Black")
-    (set-foreground-color "LightGray")
-    (set-cursor-color "Gray")
-    (set-frame-parameter nil 'alpha 80) ;透明度
+;;    (set-background-color "Black")
+;;   (set-foreground-color "LightGray")
+;;   (set-cursor-color "Gray")
+    (set-frame-parameter nil 'alpha 100) ;透明度
     ))
 
-
+(load-theme 'cherry-blossom t)
 
 ;; yasnippet
 (require 'yasnippet)
@@ -311,6 +337,8 @@
 		\\usepackage[backend=biber,bibencoding=utf8]{biblatex}
 		\\usepackage{url}
 		\\usepackage{indentfirst}
+		\\usepackage[normalem]{ulem}
+		\\usepackage[dvipdfmx]{hyperref}
 		[NO-DEFAULT-PACKAGES]
 		[EXTRA]"
 	       ("\\section{%s}"."\\section*{%s}")
@@ -319,13 +347,15 @@
 	       ("\\paragraph{%s}"."\\paragraph*{%s}")
 	       ("\\subparagraph{%s}"."\\subparagraph{%s}")))
 
-(setq org-latex-with-hyperref nil)
+(setq org-agenda-files '("~/GitHub/Tasks/daily.org"))
+
+(setq org-latex-hyperref-template t)
 (setq org-src-fontify-natively t)
 
 ;; smartparens
 (require 'smartparens-config)
 (smartparens-global-mode t)
-
+(sp-pair "*" "*")
 
 ;; rainbow-delimiters-mode
 ;; rainbow-delimiters を使うための設定
@@ -365,10 +395,13 @@
 (toggle-truncate-lines t)
 
 ;; slime
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq inferior-lisp-program "/usr/local/bin/clisp")
+;;(setq inferior-lisp-program "/usr/local/bin/sbcl")
 
 ;; SBCLをデフォルトのCommon Lisp処理系に設定
-(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "clisp")
+;;(setq inferior-lisp-program "sbcl")
+
 
 ;; SLIMEのロード
 (require 'slime)
@@ -383,3 +416,66 @@
 
 ;; stylus 
 (require 'stylus-mode)
+
+
+;; image+
+(imagex-auto-adjust-mode t)
+
+;; reload file
+(auto-revert-mode t)
+(auto-image-file-mode t)
+
+;; sr-
+(require 'sr-speedbar) 
+(setq sr-speedbar-right-side nil) 
+(setq sr-speedbar-width-x 15)
+(global-set-key (kbd "<f5>") 'sr-speedbar-toggle)
+
+;; imenu-list
+(require 'imenu)
+(setq imenu-auto-rescan t)
+
+
+;; clojure ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'clojure-mode)
+(add-hook 'clojure-mode-hook #'subword-mode)
+(add-hook 'clojure-mode-hook #'cider-mode)
+
+
+(require 'cider)
+(add-hook 'cider-mode-hook #'clj-refactor-mode)
+(add-hook 'cider-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'eldoc-mode)
+(add-hook 'cider-repl-mode-hook #'company-mode)
+(add-hook 'cider-repl-mode-hook #'eldoc-mode)
+(add-hook 'cider-mode-hook #'clj-refactor-mode)
+
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+
+
+;; flycheck ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'flycheck)
+(global-flycheck-mode)
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
+
+
+;; file make
+
+;;; ;;; find-fileでディレクトリが無ければ作る
+(defun make-directory-unless-directory-exists ()
+  (let (
+         (d (file-name-directory buffer-file-name))
+       )
+    (unless (file-directory-p d)
+      (when (y-or-n-p "No such directory: make directory?")
+        (make-directory d t))
+      )
+    )
+  nil
+)
+(add-hook 'find-file-not-found-hooks
+          'make-directory-unless-directory-exists)

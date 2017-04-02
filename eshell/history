@@ -1,128 +1,128 @@
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac CountLetter.java 
-java CountLetter
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-java ListJava
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-javac List.java 
-javac List.java 
-javac List.java 
-java ListJava
-javac List.java 
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-javac List.java 
-javac List.java 
-javac List.java 
-java ListJava
-javac List.java 
-java ListJava
-java -version
-octave
-stylus --version
-stylus --doc
-stylus --document
-stylus --documents
-stylus --help
-platex report.tex 
-dvipdfmx report
+ls
+make
+ls
+make %.o
+make Human.o
+ls
+make Human.o
+make HELLO
+make HELLO
+make HELLO
+g++ Human.exe -o Human.o
+g++ Human.o -o Human.exe
+make HELLO
+make 
+make 
+ls
+make
+make
+;s
+ls
+make
+make
+make
+make
+make
+make
+ls
+make
+make
+make
+make
+make
+make
+make HumanTest.o
+make HumanTest.o
+make
+make Hello
+ls
+.Human.o
+./Human.o
+./Human.cpp
+make HELLO
+ls
+make clean
+make clean
+ls
+rm -fm Human.cpp
+ls
+rm -fs Human.cpp
+rm -f Human.cpp
+ls
+make
+make Human.o
+make
+make
+HumanTest.exer
+./HumanTest.exe
+make
+make clean
+make
+make
+./HumanTest.exe
+make run
+make run
+make clean
+make
+make
+make clean
+make
+make
+make
+make
+ls
+make clean
+make
+ls
+make clean
+ls
+g++ -o HumanTest2.exe Human.o HumanTest.o
+make
+g++ -o HumanTest2.exe Human.o HumanTest.o
+make
+make
+make clean
+make
+make
+make clean
+make
+make
+make clean
+make
+make
+make clean
+make 
+make
+make clean
+make
+make
+make clean
+make
+make clean
+make 
+make clean
+make 
+g++ O2 -c -o Human.o Human.cpp
+g++ -O2 -c -o Human.o Human.cpp
+ls
+make clean
+make
+make clean2
+make 
+ls
+make 
+ls
+make clean
+make
+ls
+make clean2
+cd ../Date
+make Date.o
+ls
+make
+make run
+make
+make run
+make
+make
+make run

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: class
+# key: cls
+# --
+${1:type} ${2:func} (${3:args}) {
+    ${4:val}
+}
