@@ -1,0 +1,128 @@
+make clean
+ls
+rm -fm Human.cpp
+ls
+rm -fs Human.cpp
+rm -f Human.cpp
+ls
+make
+make Human.o
+make
+make
+HumanTest.exer
+./HumanTest.exe
+make
+make clean
+make
+make
+./HumanTest.exe
+make run
+make run
+make clean
+make
+make
+make clean
+make
+make
+make
+make
+ls
+make clean
+make
+ls
+make clean
+ls
+g++ -o HumanTest2.exe Human.o HumanTest.o
+make
+g++ -o HumanTest2.exe Human.o HumanTest.o
+make
+make
+make clean
+make
+make
+make clean
+make
+make
+make clean
+make
+make
+make clean
+make 
+make
+make clean
+make
+make
+make clean
+make
+make clean
+make 
+make clean
+make 
+g++ O2 -c -o Human.o Human.cpp
+g++ -O2 -c -o Human.o Human.cpp
+ls
+make clean
+make
+make clean2
+make 
+ls
+make 
+ls
+make clean
+make
+ls
+make clean2
+cd ../Date
+make Date.o
+ls
+make
+make run
+make
+make run
+make
+make
+make run
+cd ../C++/BitSet/
+make
+make run
+make clean2
+make 
+make run
+make 
+make
+make run
+make
+make run
+make
+make run
+make clean2
+make 
+make run
+cd ../chap03/
+ls ../
+lein -v
+ssh-keygen
+cat rsa_id.pub >> authorized_keys
+ls
+nano authorized_keys 
+rm -f authorized_keys
+cd .ssh
+ls
+cat id_rsa.pub >> authorized_keys
+ls
+ls
+ssh jtaro@abelia31.coins.tsukuba.ac.jp
+ssh jtaro@abelia31.coins.tsukuba.ac.jp
+ssh jtaro@abelia29.coins.tsukuba.ac.jp
+cat protocol 1,2 >> config
+ls
+ssh jtaro@abelia29.coins.tsukuba.ac.jp
+ssh jtaro@abelia31.coins.tsukuba.ac.jp
+ssh s1611350@abelia31.coins.tsukuba.ac.jp
+sudo pat install teraterm
+sudo apt install teraterm
+emacs ~/.bashrc
+cd ../
+ssh s1611350@abelia31.coins.tsukuba.ac.jp
+ssh s1611350@abelia31.coins.tsukuba.ac.jp -X
+octave

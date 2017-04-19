@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: method
+# key: m
+# --
+${1:type} ${2:func} (${3:args}) $4{
+	  ${5:val}
+}

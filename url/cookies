@@ -1,0 +1,14 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '((".twitter.com"
+  [url-cookie "guest_id" "v1%3A148543846033187406" "26-Jan-2019 13:47:40.00 UTC" "/" ".twitter.com" nil]))
+)
+(setq url-cookie-secure-storage
+ 'nil)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

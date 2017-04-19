@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: defst
+# key: defst
+# --
+(defstruct $1)
