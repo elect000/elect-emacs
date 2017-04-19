@@ -1,121 +1,44 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; 初期表示位置、サイズ
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq initial-frame-alist
-      '((left   . 100)			; 位置 (X)
-	(top    .  50)			; 位置 (Y)
-	(width  . 120)			; サイズ(幅)
-	(height .  40)			; サイズ(高さ)
+      '((left   . 100)		
+	(top    .  50)		
+	(width  . 120)		
+	(height .  40)		
 	))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; スクロール
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; スクロールした際のカーソルの移動行数
 (setq scroll-conservatively 1)
 
-;; スクロール開始のマージンの行数
 (setq scroll-margin 10)
 
-
-;; 1 画面スクロール時に重複させる行数
 (setq next-screen-context-lines 10)
 
-;; 1 画面スクロール時にカーソルの画面上の位置をなるべく変えない
 (setq scroll-preserve-screen-position t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
-;; 検索、置換時の大文字、小文字の区別
-;; 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; オプションの "Ignore Case for Search" で設定可
-;;
-;; ;; 検索(全般)
-;; (setq case-fold-search t)
-;;
-;; ;; インクリメンタルサーチ
-;; (setq isearch-case-fold-search nil)
-
-
-;; バッファー名の検索
 (setq read-buffer-completion-ignore-case t)
 
-;; ファイル名の検索
 (setq read-file-name-completion-ignore-case t)
 
-
-;;;置換(全般)
-;; (setq case-replace t)
-
-;; dabbrev 時の置換
 (setq dabbrev-case-replace nil)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
-;; 自動作成ファイル
-;; 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;; backup ファイルオープン時のバックアップ (xxx~)
-;; ================================================================
-
-;; 実行の有無
 (setq make-backup-files t)
 
-;; 格納ディレクトリーの変更
-;;   (対象ディレクトリー . 格納ディレクトリー) のリスト
-(setq backup-directory-alist '((".*" . "~/.ehist")))
+(setq version-control     t) 
+(setq kept-new-versions   5) 
+(setq kept-old-versions   1) 
+(setq delete-old-versions t) 
+
+(setq auto-save-timeout 10)	
+(setq auto-save-interval 100)	
 
 
-;; 番号付けによる複数保存
-(setq version-control     t)  ;; 実行の有無
-(setq kept-new-versions   5)  ;; 最新の保持数
-(setq kept-old-versions   1)  ;; 最古の保持数
-(setq delete-old-versions t)  ;; 範囲外を削除
-
-
-
-;; auto-save 自動保存ファイル (#xxx#)
-;; ================================================================
-
-;; ;; 実行の有無
-;; (setq auto-save-default nil)
-
-;; ;; 格納ディレクトリーの変更
-;; ;;   (対象ファイルのパターン . 保存ファイルパス) のリスト
-;; (setq auto-save-file-name-transforms
-;;       (append auto-save-file-name-transforms
-;; 	      '((".*" "~/tmp/" t))))
-
-
-;; 保存の間隔
-(setq auto-save-timeout 10)	 ;; 秒   (デフォルト : 30)
-(setq auto-save-interval 100)	 ;; 打鍵 (デフォルト : 300)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
-;; パッケージ
-;; 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; package
 
 (when (require 'package nil t)
   (setq package-archives
 	(append package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
 				   ("marmalade" . "http://marmalade-repo.org/packages/"))))
   (package-initialize))
-;; because of el-get
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -298,8 +221,8 @@
     (set-frame-parameter nil 'alpha 100) ;透明度
     ))
 
-(load-theme 'cherry-blossom t)
-
+;;(load-theme 'cherry-blossom nil)
+(load-theme 'wombat t)
 ;; yasnippet
 (require 'yasnippet)
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20170108.1830")
@@ -347,9 +270,8 @@
 	       ("\\paragraph{%s}"."\\paragraph*{%s}")
 	       ("\\subparagraph{%s}"."\\subparagraph{%s}")))
 
-(setq org-agenda-files '("~/GitHub/Tasks/daily.org"))
 
-(setq org-latex-hyperref-template t)
+(setq org-latex-hyperref-template nil)
 (setq org-src-fontify-natively t)
 
 ;; smartparens
@@ -395,27 +317,27 @@
 (toggle-truncate-lines t)
 
 ;; slime
-(setq inferior-lisp-program "/usr/bin/clisp") 		;; !!! you must change it !!!
+;;(setq inferior-lisp-program "/usr/bin/clisp") 		;; !!! you must change it !!!
 ;;(setq inferior-lisp-program "/usr/bin/sbcl") 		;; !!! you must change it !!!
 
 ;; SBCLをデフォルトのCommon Lisp処理系に設定
-(setq inferior-lisp-program "clisp")
+;;(setq inferior-lisp-program "clisp")
 ;;(setq inferior-lisp-program "sbcl")
 
 
 ;; SLIMEのロード
-(require 'slime)
-(slime-setup '(slime-repl slime-fancy slime-banner)) 
+;;(require 'slime)
+;;(slime-setup '(slime-repl slime-fancy slime-banner)) 
 
 ;; ctable
 (require 'ctable)
 
 
 ;; path
-(exec-path-from-shell-initialize)
+;;(exec-path-from-shell-initialize)
 
 ;; stylus 
-(require 'stylus-mode)
+;;(require 'stylus-mode)
 
 
 ;; image+
@@ -438,22 +360,22 @@
 
 ;; clojure ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'clojure-mode)
-(add-hook 'clojure-mode-hook #'subword-mode)
-(add-hook 'clojure-mode-hook #'cider-mode)
+;;(require 'clojure-mode)
+;;(add-hook 'clojure-mode-hook #'subword-mode)
+;;(add-hook 'clojure-mode-hook #'cider-mode)
 
 
-(require 'cider)
-(add-hook 'cider-mode-hook #'clj-refactor-mode)
-(add-hook 'cider-mode-hook #'company-mode)
-(add-hook 'cider-mode-hook #'eldoc-mode)
-(add-hook 'cider-repl-mode-hook #'company-mode)
-(add-hook 'cider-repl-mode-hook #'eldoc-mode)
-(add-hook 'cider-mode-hook #'clj-refactor-mode)
+;;(require 'cider)
+;;(add-hook 'cider-mode-hook #'clj-refactor-mode)
+;;(add-hook 'cider-mode-hook #'company-mode)
+;;(add-hook 'cider-mode-hook #'eldoc-mode)
+;;(add-hook 'cider-repl-mode-hook #'company-mode)
+;;(add-hook 'cider-repl-mode-hook #'eldoc-mode)
+;;(add-hook 'cider-mode-hook #'clj-refactor-mode)
 
-(require 'ac-cider)
-(add-hook 'cider-mode-hook 'ac-cider-setup)
-(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+;;(require 'ac-cider)
+;;(add-hook 'cider-mode-hook 'ac-cider-setup)
+;;(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
 
 ;; flycheck ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -482,14 +404,48 @@
 
 
 ;; octave
-(autoload 'octave-mode "octave-mod" nil t)
-(setq auto-mode-alist
-           (cons '("\\.m$" . octave-mode) auto-mode-alist))
-(add-hook 'octave-mode-hook
-               (lambda ()
-                 (abbrev-mode 1)
-                 (auto-fill-mode 1)
-                 (if (eq window-system 'x)
-                     (font-lock-mode t))))
+;;(autoload 'octave-mode "octave-mod" nil t)
+;;(setq auto-mode-alist
+;;           (cons '("\\.m$" . octave-mode) auto-mode-alist))
+;;(add-hook 'octave-mode-hook
+;;               (lambda ()
+;;                 (abbrev-mode 1)
+;;                (auto-fill-mode 1)
+;;                 (if (eq window-system 'x)
+;;                     (font-lock-mode t))))
 
+
+;; font
+(font-spec :family "MeiryoKe_Console" :size 24)
+(font-spec :family "ヒラギノ角ゴ ProN W3" :size 24 :weight 'bold :slant 'italic);;
+
+;; web-mode 
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+
+
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-style-padding 1)
+  (setq web-mode-script-padding 1)
+  (setq web-mode-block-padding 0)
+  (setq web-mode-comment-style 2)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-css-colorization t)
+  (setq web-mode-enable-current-column-highlight t)
+  (setq web-mode-enable-current-element-highlight t)
+
+)
+(add-hook 'web-mode-hook  'my-web-mode-hook)
 
